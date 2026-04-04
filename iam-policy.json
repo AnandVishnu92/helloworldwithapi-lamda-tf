@@ -1,0 +1,82 @@
+# IAM Policy for Terraform Deployment
+# Attach this policy to your IAM user or create a new user with these permissions
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:GetRole",
+                "iam:PassRole",
+                "iam:AttachRolePolicy",
+                "iam:DetachRolePolicy",
+                "iam:ListAttachedRolePolicies",
+                "iam:ListRolePolicies",
+                "iam:PutRolePolicy",
+                "iam:DeleteRolePolicy"
+            ],
+            "Resource": "arn:aws:iam::*:role/hello-world-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListPolicies",
+                "iam:GetPolicy"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:CreateFunction",
+                "lambda:DeleteFunction",
+                "lambda:GetFunction",
+                "lambda:UpdateFunctionCode",
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:ListFunctions",
+                "lambda:AddPermission",
+                "lambda:RemovePermission",
+                "lambda:GetPolicy"
+            ],
+            "Resource": "arn:aws:lambda:*:*:function:hello-world-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "apigateway:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:DeleteLogGroup",
+                "logs:DescribeLogGroups",
+                "logs:CreateLogStream",
+                "logs:DeleteLogStream",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents",
+                "logs:GetLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:log-group:/aws/apigateway/hello-world-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:DeleteLogGroup",
+                "logs:DescribeLogGroups",
+                "logs:CreateLogStream",
+                "logs:DeleteLogStream",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents",
+                "logs:GetLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/hello-world-*"
+        }
+    ]
+}
