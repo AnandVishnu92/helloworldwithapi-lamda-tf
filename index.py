@@ -11,8 +11,8 @@ def lambda_handler(event, context):
             'Access-Control-Allow-Origin': '*'
         },
         'body': json.dumps({
-            'message': 'Hello, World!',
+            'message': 'Hello, World! Anand ',
             'description': 'This is a simple API powered by AWS Lambda and API Gateway',
-            'request_id': context.request_id
+            'request_id': getattr(context, 'aws_request_id', None)
         })
     }

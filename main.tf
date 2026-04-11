@@ -86,7 +86,7 @@ resource "aws_apigatewayv2_route" "hello_world_get" {
 # API Gateway Stage
 resource "aws_apigatewayv2_stage" "hello_world_stage" {
   api_id      = aws_apigatewayv2_api.hello_world_api.id
-  name        = "prod"
+  name        = "$default"
   auto_deploy = true
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.api_logs.arn
